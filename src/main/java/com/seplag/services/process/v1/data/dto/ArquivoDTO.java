@@ -1,6 +1,7 @@
 package com.seplag.services.process.v1.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.seplag.services.process.v1.services.validation.ArquivoValidation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,8 @@ public class ArquivoDTO {
 	private Long tamanho;
 	private byte[] binario;
 	@JsonProperty("beneficio_id")
-	private String beneficioId;
-	@JsonProperty("arquivoTipo_id")
-	private String arquivoTipoId;
+	private Long beneficioId;
+	private ArquivoTipoDTO arquivoTipo;
 
 	public ArquivoDTO(ArquivoUploadDTO arquivoUploadDTO) throws IOException {
 		this.nome = StringUtils.cleanPath(arquivoUploadDTO.getArquivo().getName());
@@ -31,6 +31,7 @@ public class ArquivoDTO {
 		this.tamanho = arquivoUploadDTO.getArquivo().getSize();
 		this.binario = arquivoUploadDTO.getArquivo().getBytes();
 		this.beneficioId = arquivoUploadDTO.getBeneficioId();
-		this.arquivoTipoId = arquivoUploadDTO.getArquivoTipoId();
+		this.arquivoTipo = new ArquivoTipoDTO();
+		this.arquivoTipo.setId(arquivoUploadDTO.getArquivoTipoId());
 	}
 }

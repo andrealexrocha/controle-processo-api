@@ -28,6 +28,9 @@ public class Arquivo implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @Column(name = "descricao", nullable = false)
+    private String descricao;
+
     @Column(name = "tipo", nullable = false)
     private String tipo;
 

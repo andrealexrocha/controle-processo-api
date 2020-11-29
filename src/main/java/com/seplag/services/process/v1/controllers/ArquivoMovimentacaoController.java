@@ -7,7 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,36 +19,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/movimentacoes/")
-@Api(value = "Arquivo movimentacoes v1")
+@Api(value = "Arquivo movimentações v1")
 @AllArgsConstructor
-@CrossOrigin
 public class ArquivoMovimentacaoController {
 
     private final ArquivoMovimentacaoService arquivoMovimentacaoService;
 
-
+    @ApiOperation(value = "Retorna uma lista contendo todas as movimentações cadastradas para um arquivo ID.")
     @GetMapping(value = "/arquivo/{arquivoId}")
-    public ResponseEntity<Response<List<ArquivoMovimentacaoDTO>>> getMovimentacoes(@PathVariable Long arquivoId) {
-        Response<List<ArquivoMovimentacaoDTO>> response = Response.<List<ArquivoMovimentacaoDTO>>builder().data(arquivoMovimentacaoService.listarMovimentacoes(arquivoId)).build();
+    public ResponseEntity<Response<List<ArquivoMovimentacaoDTO>>> listar(@PathVariable Long arquivoId) {
+        Response<List<ArquivoMovimentacaoDTO>> response = Response.<List<ArquivoMovimentacaoDTO>>builder().data(arquivoMovimentacaoService.listar(arquivoId)).build();
 
         return ResponseEntity
                 .ok(response);
     }
 
-
-    @ApiOperation(value = "Post movimentacao de um arquivo")
-    @PostMapping("/save")
-    public ResponseEntity<Response<ArquivoMovimentacaoDTO>> saveMovimentacao(@RequestBody ArquivoMovimentacaoDTO arquivoMovimentacaoDTO){
-        Response<ArquivoMovimentacaoDTO> response = Response.<ArquivoMovimentacaoDTO>builder().data(arquivoMovimentacaoService.save(arquivoMovimentacaoDTO)).build();
+    @ApiOperation(value = "Salva uma nova movimentação.")
+    @PostMapping("/salvar")
+    public ResponseEntity<Response<ArquivoMovimentacaoDTO>> salvar(@RequestBody ArquivoMovimentacaoDTO arquivoMovimentacaoDTO){
+        Response<ArquivoMovimentacaoDTO> response = Response.<ArquivoMovimentacaoDTO>builder().data(arquivoMovimentacaoService.salvar(arquivoMovimentacaoDTO)).build();
 
         return ResponseEntity.ok(response);
     }
 
-/*    @GetMapping(value = "/{movimentacaoId}")
-    public ResponseEntity<Response<ArquivoMovimentacaoDTO>> getMovimentacao(@PathVariable Long movimentacaoId) {
-        Response<ArquivoMovimentacaoDTO> response = Response.<ArquivoDTO>builder().data(arquivoMovimentacaoService.getFile(movimentacaoId)).build();
-
-        return ResponseEntity
-                .ok(response);
-    }*/
+    @ApiOperation(value = "Exclui uma movimentação.")
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable("id") Long id) throws RuntimeException {
+        this.arquivoMovimentacaoService.excluir(id);
+        return ResponseEntity.noContent().build();
+    }
 }

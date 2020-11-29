@@ -16,7 +16,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	private final FuncionarioMapper funcionarioMapper;
 
 	@Override
-	public List<FuncionarioDTO> requestFuncionarios() {
+	public List<FuncionarioDTO> listar() {
 		return this.funcionarioMapper.map(funcionarioRepository.findAll());
 	}
 

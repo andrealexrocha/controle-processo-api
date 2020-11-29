@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface FuncionarioService {
 
-	List<FuncionarioDTO> requestFuncionarios();
+	List<FuncionarioDTO> listar();
 
 }

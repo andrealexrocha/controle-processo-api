@@ -16,7 +16,7 @@ public class ArquivoTipoServiceImpl implements ArquivoTipoService {
 	private final ArquivoTipoMapper arquivoTipoMapper;
 
 	@Override
-	public List<ArquivoTipoDTO> requestArquivoTipos() {
+	public List<ArquivoTipoDTO> listar() {
 		return this.arquivoTipoMapper.map(arquivoTipoRepository.findAll());
 	}
 

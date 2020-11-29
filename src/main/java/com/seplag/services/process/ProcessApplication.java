@@ -22,15 +22,15 @@ public class ProcessApplication {
 	public Docket processApplicationApiV1() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("v1").select()
 				.apis(RequestHandlerSelectors.basePackage("com.seplag.services.process.v1.controllers"))
-				.paths(PathSelectors.any()).build().apiInfo(new ApiInfoBuilder().title("Maestro Monitor API v1")
-						.version("1.0").description("API for monitoring Maestro application.").build());
+				.paths(PathSelectors.any()).build().apiInfo(new ApiInfoBuilder().title("Controle de Benefício API v1")
+						.version("1.0").description("API para uma aplicação de controle de benefícios.").build());
 	}
 
 	@Bean
 	public Docket processApplicationApiV2() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("v2").select()
 				.apis(RequestHandlerSelectors.basePackage("com.seplag.services.process.v2.controllers"))
-				.paths(PathSelectors.any()).build().apiInfo(new ApiInfoBuilder().title("Maestro Monitor API v2")
-						.version("2.0").description("API for monitoring Maestro application.").build());
+				.paths(PathSelectors.any()).build().apiInfo(new ApiInfoBuilder().title("Controle de Benefício API v2")
+						.version("2.0").description("API para uma aplicação de controle de benefícios.").build());
 	}
 }

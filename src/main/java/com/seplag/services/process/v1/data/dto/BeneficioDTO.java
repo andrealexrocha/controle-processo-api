@@ -1,13 +1,10 @@
 package com.seplag.services.process.v1.data.dto;
 
-import lombok.AllArgsConstructor;
+import com.seplag.services.process.v1.services.validation.BeneficioValidation;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@BeneficioValidation
 public class BeneficioDTO {
 
 	private Long id;

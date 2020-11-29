@@ -16,7 +16,7 @@ public class OrgaoServiceImpl implements OrgaoService {
 	private final OrgaoMapper orgaoMapper;
 
 	@Override
-	public List<OrgaoDTO> requestOrgaos() {
+	public List<OrgaoDTO> listar() {
 		return this.orgaoMapper.map(orgaoRepository.findAll());
 	}
 

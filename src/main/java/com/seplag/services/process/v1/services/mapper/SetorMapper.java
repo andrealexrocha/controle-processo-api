@@ -1,8 +1,6 @@
 package com.seplag.services.process.v1.services.mapper;
 
-import com.seplag.services.process.v1.data.dto.OrgaoDTO;
 import com.seplag.services.process.v1.data.dto.SetorDTO;
-import com.seplag.services.process.v1.data.models.Orgao;
 import com.seplag.services.process.v1.data.models.Setor;
 import org.mapstruct.Mapper;
 

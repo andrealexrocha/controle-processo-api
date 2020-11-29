@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface OrgaoService {
 
-	List<OrgaoDTO> requestOrgaos();
+	List<OrgaoDTO> listar();
 
 }

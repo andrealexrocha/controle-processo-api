@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface ArquivoTipoService {
 
-	List<ArquivoTipoDTO> requestArquivoTipos();
+	List<ArquivoTipoDTO> listar();
 
 }
